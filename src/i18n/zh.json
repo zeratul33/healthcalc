@@ -1,0 +1,60 @@
+{
+  "nav": { "home": "首页", "bmi": "BMI 计算器", "bmr": "BMR 计算器", "tdee": "TDEE 计算器" },
+  "home": {
+    "hero_title": "免费健康与健身计算器",
+    "hero_desc": "基于科学的工具，帮助您了解自己的身体，设定切实可行的目标，并做出明智的健康决策。",
+    "about": "HealthCalc 提供基于科学公式的免费健康计算器，帮助您追踪BMI、计算代谢率并自信地规划营养方案。"
+  },
+  "bmi": {
+    "title": "BMI 计算器",
+    "desc": "计算您的体质指数，了解您的体重与身高的关系。",
+    "weight": "体重", "height": "身高", "calculate": "计算 BMI",
+    "your_bmi": "您的 BMI", "underweight": "偏轻", "normal": "正常",
+    "overweight": "超重", "obese": "肥胖",
+    "unit_metric": "公制 (kg/cm)", "unit_imperial": "英制 (lbs/ft)",
+    "lbs": "磅", "ft": "英尺", "in": "英寸"
+  },
+  "bmr": {
+    "title": "BMR 计算器",
+    "desc": "计算您的基础代谢率——您的身体在静息状态下消耗的卡路里。",
+    "gender": "性别", "age": "年龄", "male": "男", "female": "女",
+    "weight": "体重", "height": "身高", "calculate": "计算 BMR",
+    "your_bmr": "您的 BMR", "result_desc": "完全静息状态下每日消耗卡路里"
+  },
+  "tdee": {
+    "title": "TDEE 计算器",
+    "desc": "根据您的活动水平计算每日总能量消耗。",
+    "gender": "性别", "age": "年龄", "male": "男", "female": "女",
+    "weight": "体重", "height": "身高",
+    "activity": "活动水平",
+    "sedentary": "久坐（几乎不运动）",
+    "lightly_active": "轻度活跃（每周1-3天）",
+    "moderately_active": "中度活跃（每周3-5天）",
+    "very_active": "高度活跃（每周6-7天）",
+    "extra_active": "极度活跃（高强度训练/体力劳动）",
+    "calculate": "计算 TDEE",
+    "your_tdee": "您的 TDEE",
+    "maintenance": "维持热量",
+    "weight_loss": "减重（-500千卡）",
+    "weight_gain": "增肌（+500千卡）",
+    "result_desc": "每日所需卡路里"
+  },
+  "units": { "kg": "千克", "cm": "厘米", "years": "岁", "kcal": "千卡/天" },
+  "errors": {
+    "required": "此字段为必填项。",
+    "positive": "请输入正数。",
+    "weight_range": "请输入20–500千克之间的体重。",
+    "height_range": "请输入50–300厘米之间的身高。",
+    "age_range": "请输入1–120之间的年龄。"
+  },
+  "meta": {
+    "bmi_title": "BMI计算器 — 免费体质指数工具 | HealthCalc",
+    "bmi_desc": "在线免费计算您的体质指数（BMI），支持公制和英制。了解您的体重类别和健康影响。",
+    "bmr_title": "BMR计算器 — 基础代谢率 | HealthCalc",
+    "bmr_desc": "使用Mifflin-St Jeor公式计算您的基础代谢率（BMR），了解您的身体在静息状态下消耗多少卡路里。",
+    "tdee_title": "TDEE计算器 — 每日总能量消耗 | HealthCalc",
+    "tdee_desc": "根据您的活动水平计算每日总能量消耗（TDEE），获取减重、维持或增肌的个性化卡路里目标。",
+    "home_title": "免费健康与健身计算器 | HealthCalc",
+    "home_desc": "免费在线健康计算器：BMI、BMR 和 TDEE。基于科学的工具，帮助您了解自己的身体，实现健康目标。"
+  }
+}

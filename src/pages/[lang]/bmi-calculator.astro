@@ -1,0 +1,98 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AdSlot from '@/components/AdSlot.astro';
+import BMICalculator from '@/components/calculators/BMICalculator';
+import { SITE_URL, SUPPORTED_LANGS } from '@/consts';
+import { makeTranslator } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  const nonEnglish = SUPPORTED_LANGS.filter((l) => l !== 'en');
+  return nonEnglish.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+const allTranslations: Record<string, Record<string, unknown>> = {
+  zh: (await import('@/i18n/zh.json')).default,
+  es: (await import('@/i18n/es.json')).default,
+  fr: (await import('@/i18n/fr.json')).default,
+  de: (await import('@/i18n/de.json')).default,
+  ja: (await import('@/i18n/ja.json')).default,
+  ko: (await import('@/i18n/ko.json')).default,
+  pt: (await import('@/i18n/pt.json')).default,
+  ru: (await import('@/i18n/ru.json')).default,
+  ar: (await import('@/i18n/ar.json')).default,
+};
+
+const dict = allTranslations[lang] ?? allTranslations.zh;
+const t = makeTranslator(dict);
+const canonical = `${SITE_URL}/${lang}/bmi-calculator`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/bmi-calculator` : `${SITE_URL}/${l}/bmi-calculator`,
+}));
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: t('bmi.title'),
+    applicationCategory: 'HealthApplication',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    url: canonical,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is a healthy BMI range?', acceptedAnswer: { '@type': 'Answer', text: 'A healthy BMI is between 18.5 and 24.9. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is obese.' } },
+      { '@type': 'Question', name: 'Is BMI accurate for everyone?', acceptedAnswer: { '@type': 'Answer', text: 'BMI is a useful screening tool but has limitations. It does not account for muscle mass, bone density, or fat distribution.' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={t('meta.bmi_title')}
+  description={t('meta.bmi_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  schema={schema}
+  currentPath={`/${lang}/bmi-calculator`}
+>
+  <div class="max-w-3xl mx-auto">
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-3">{t('bmi.title')}</h1>
+      <p class="text-lg text-gray-600">{t('bmi.desc')}</p>
+    </header>
+
+    <BMICalculator client:load dict={dict} />
+    <AdSlot />
+
+    <section class="mt-12 bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+      <p class="text-gray-600 leading-relaxed">{t('meta.bmi_desc')}</p>
+      <p class="mt-4 text-sm text-gray-400">
+        For the full guide in English, visit the <a href="/bmi-calculator" class="text-green-600 underline">English BMI Calculator page</a>.
+      </p>
+    </section>
+
+    <section class="mt-8" aria-label="FAQ">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">FAQ</h2>
+      <div class="space-y-3">
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">What is a healthy BMI range?</summary>
+          <p class="mt-3 text-gray-600">A healthy BMI is between 18.5 and 24.9. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is obese.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Is BMI accurate for athletes?</summary>
+          <p class="mt-3 text-gray-600">Not always. BMI cannot distinguish between fat and muscle mass. Highly muscular individuals may show a high BMI despite very low body fat.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">How is BMI calculated?</summary>
+          <p class="mt-3 text-gray-600">BMI = weight in kg ÷ (height in m)². For example: 70 kg ÷ (1.75 m)² = 22.9</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

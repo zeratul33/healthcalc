@@ -1,0 +1,98 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AdSlot from '@/components/AdSlot.astro';
+import BMRCalculator from '@/components/calculators/BMRCalculator';
+import { SITE_URL, SUPPORTED_LANGS } from '@/consts';
+import { makeTranslator } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  const nonEnglish = SUPPORTED_LANGS.filter((l) => l !== 'en');
+  return nonEnglish.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+const allTranslations: Record<string, Record<string, unknown>> = {
+  zh: (await import('@/i18n/zh.json')).default,
+  es: (await import('@/i18n/es.json')).default,
+  fr: (await import('@/i18n/fr.json')).default,
+  de: (await import('@/i18n/de.json')).default,
+  ja: (await import('@/i18n/ja.json')).default,
+  ko: (await import('@/i18n/ko.json')).default,
+  pt: (await import('@/i18n/pt.json')).default,
+  ru: (await import('@/i18n/ru.json')).default,
+  ar: (await import('@/i18n/ar.json')).default,
+};
+
+const dict = allTranslations[lang] ?? allTranslations.zh;
+const t = makeTranslator(dict);
+const canonical = `${SITE_URL}/${lang}/bmr-calculator`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/bmr-calculator` : `${SITE_URL}/${l}/bmr-calculator`,
+}));
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: t('bmr.title'),
+    applicationCategory: 'HealthApplication',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    url: canonical,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is BMR?', acceptedAnswer: { '@type': 'Answer', text: 'BMR (Basal Metabolic Rate) is the number of calories your body needs at complete rest to maintain basic functions like breathing, circulation, and cell repair.' } },
+      { '@type': 'Question', name: 'What is the difference between BMR and TDEE?', acceptedAnswer: { '@type': 'Answer', text: 'BMR is calories burned at rest. TDEE multiplies BMR by an activity factor to give total daily calorie needs.' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={t('meta.bmr_title')}
+  description={t('meta.bmr_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  schema={schema}
+  currentPath={`/${lang}/bmr-calculator`}
+>
+  <div class="max-w-3xl mx-auto">
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-3">{t('bmr.title')}</h1>
+      <p class="text-lg text-gray-600">{t('bmr.desc')}</p>
+    </header>
+
+    <BMRCalculator client:load dict={dict} />
+    <AdSlot />
+
+    <section class="mt-12 bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+      <p class="text-gray-600 leading-relaxed">{t('meta.bmr_desc')}</p>
+      <p class="mt-4 text-sm text-gray-400">
+        For the full guide in English, visit the <a href="/bmr-calculator" class="text-green-600 underline">English BMR Calculator page</a>.
+      </p>
+    </section>
+
+    <section class="mt-8" aria-label="FAQ">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">FAQ</h2>
+      <div class="space-y-3">
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">What is BMR?</summary>
+          <p class="mt-3 text-gray-600">BMR is the number of calories your body burns at complete rest to sustain vital functions — breathing, blood circulation, and cell repair.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Which formula does this calculator use?</summary>
+          <p class="mt-3 text-gray-600">We use the Mifflin-St Jeor equation, widely considered the most accurate formula for estimating BMR in healthy adults.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Can I eat at my BMR?</summary>
+          <p class="mt-3 text-gray-600">Eating at or below BMR for extended periods is not recommended. Your actual calorie needs include activity — use the TDEE calculator for a more complete estimate.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

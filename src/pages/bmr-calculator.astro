@@ -1,0 +1,99 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AdSlot from '@/components/AdSlot.astro';
+import BMRCalculator from '@/components/calculators/BMRCalculator';
+import { SITE_URL, SUPPORTED_LANGS } from '@/consts';
+import en from '@/i18n/en.json';
+import { makeTranslator } from '@/i18n/utils';
+
+const t = makeTranslator(en);
+const lang = 'en';
+const canonical = `${SITE_URL}/bmr-calculator`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/bmr-calculator` : `${SITE_URL}/${l}/bmr-calculator`,
+}));
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'BMR Calculator',
+    applicationCategory: 'HealthApplication',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    url: canonical,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is a normal BMR?', acceptedAnswer: { '@type': 'Answer', text: 'Average BMR ranges from 1,400–1,700 kcal/day for women and 1,600–2,000 kcal/day for men, though individual values vary based on age, weight, height, and body composition.' } },
+      { '@type': 'Question', name: 'What is the difference between BMR and TDEE?', acceptedAnswer: { '@type': 'Answer', text: 'BMR is the calories your body burns at complete rest. TDEE (Total Daily Energy Expenditure) multiplies BMR by an activity factor to estimate total daily calorie needs including physical activity.' } },
+      { '@type': 'Question', name: 'Which BMR formula is most accurate?', acceptedAnswer: { '@type': 'Answer', text: 'The Mifflin-St Jeor equation (used here) is widely considered the most accurate formula for most people. It was validated in a 2005 study showing it predicts BMR within 10% for about 82% of people.' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={t('meta.bmr_title')}
+  description={t('meta.bmr_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  schema={schema}
+  currentPath="/bmr-calculator"
+>
+  <div class="max-w-3xl mx-auto">
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-3">{t('bmr.title')}</h1>
+      <p class="text-lg text-gray-600">{t('bmr.desc')}</p>
+    </header>
+
+    <BMRCalculator client:load dict={en} />
+    <AdSlot />
+
+    <article class="prose prose-green max-w-none mt-10">
+      <h2>What is Basal Metabolic Rate (BMR)?</h2>
+      <p>Basal Metabolic Rate (BMR) is the number of calories your body needs to maintain basic physiological functions while at complete rest — breathing, circulation, cell production, nutrient processing, and temperature regulation. Think of it as the energy cost of simply being alive. Even if you stayed in bed all day without moving, your body would still need these calories to sustain itself.</p>
+      <p>BMR represents the largest component of total energy expenditure for most people, accounting for 60–75% of daily calorie use. Understanding your BMR provides a foundation for calculating your total daily calorie needs and designing an effective nutrition plan for weight management.</p>
+
+      <h2>The Mifflin-St Jeor Equation</h2>
+      <p>Our calculator uses the <strong>Mifflin-St Jeor equation</strong>, developed in 1990 and considered the gold standard for BMR estimation among healthy adults. The formulas are:</p>
+      <ul>
+        <li><strong>Men:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) + 5</li>
+        <li><strong>Women:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) − 161</li>
+      </ul>
+      <p>A 2005 systematic review found the Mifflin-St Jeor equation to be the most accurate formula for predicting BMR in non-obese and obese individuals, correctly estimating it within 10% for 82% of participants. It outperforms the older Harris-Benedict equation, which tends to overestimate BMR by about 5%.</p>
+
+      <h2>Why BMR Matters for Health and Weight Management</h2>
+      <p>Knowing your BMR is the essential first step in calculating how many calories you need each day. By multiplying your BMR by an activity factor (see our <a href="/tdee-calculator">TDEE Calculator</a>), you get your Total Daily Energy Expenditure — the actual number of calories you should consume to maintain your current weight. To lose weight, consume fewer calories than your TDEE; to gain weight, consume more.</p>
+      <p>BMR is also clinically relevant: it declines with age (roughly 1–2% per decade after age 20), and low BMR relative to body size can indicate metabolic disorders. Conversely, a higher BMR means faster metabolism — your body burns more calories at rest.</p>
+
+      <h2>Factors That Affect Your BMR</h2>
+      <p>Several factors influence your basal metabolic rate. <strong>Body composition</strong> is perhaps the most significant: muscle tissue burns roughly 3 times more calories at rest than fat tissue, so individuals with more lean muscle mass have higher BMRs. <strong>Age</strong> plays a key role — as we age, we typically lose muscle mass and BMR decreases. <strong>Gender</strong> matters because men generally have more muscle mass and higher testosterone levels, resulting in a higher BMR than women of the same age and weight. <strong>Height and weight</strong> both increase BMR because a larger body requires more energy to sustain. <strong>Genetics</strong> also contribute, as some people naturally have faster or slower metabolisms due to inherited traits.</p>
+      <p>Hormonal factors, particularly thyroid hormone levels, can significantly affect BMR. Hypothyroidism (underactive thyroid) decreases BMR, while hyperthyroidism increases it. Additionally, extreme caloric restriction can lower BMR as the body adapts to conserve energy — this is why very low-calorie diets often become less effective over time.</p>
+
+      <h2>Using BMR for Weight Management</h2>
+      <p>Your BMR provides the minimum calorie floor below which you should not go when dieting, as this can compromise essential bodily functions and trigger metabolic adaptation. A practical approach is to eat at your TDEE (maintenance calories) for a week to establish your baseline, then adjust by 300–500 calories per day to create a gradual deficit or surplus. Pair this with sufficient protein intake (1.6–2.2g per kg of body weight) and resistance training to preserve or build muscle mass, keeping your BMR as high as possible during weight loss.</p>
+    </article>
+
+    <section class="mt-12" aria-label="Frequently Asked Questions">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Can I eat only my BMR calories?</summary>
+          <p class="mt-3 text-gray-600">Eating at or below your BMR is generally not recommended for extended periods. Your body needs additional calories for all physical activity beyond rest. Very low calorie intake can lead to muscle loss, nutrient deficiencies, and metabolic slowdown. Aim to eat at your TDEE or slightly below for sustainable weight management.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Does BMR decrease with weight loss?</summary>
+          <p class="mt-3 text-gray-600">Yes. As you lose weight, your BMR decreases because you have less body mass to sustain. This is normal and expected. Preserving muscle mass through resistance training and adequate protein intake helps minimize the decline in BMR during weight loss.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">How can I increase my BMR?</summary>
+          <p class="mt-3 text-gray-600">The most effective way to increase your BMR is to build lean muscle mass through resistance training, since muscle tissue requires more energy at rest. Staying well-hydrated, getting adequate sleep, and avoiding prolonged very-low-calorie diets also help maintain a healthy metabolic rate.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

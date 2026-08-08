@@ -1,0 +1,73 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CalculatorCard from '@/components/CalculatorCard.astro';
+import { SITE_URL, SITE_NAME, SUPPORTED_LANGS } from '@/consts';
+import { makeTranslator } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  const nonEnglish = SUPPORTED_LANGS.filter((l) => l !== 'en');
+  return nonEnglish.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+// Dynamically import the translation for this lang
+const allTranslations: Record<string, Record<string, unknown>> = {
+  zh: (await import('@/i18n/zh.json')).default,
+  es: (await import('@/i18n/es.json')).default,
+  fr: (await import('@/i18n/fr.json')).default,
+  de: (await import('@/i18n/de.json')).default,
+  ja: (await import('@/i18n/ja.json')).default,
+  ko: (await import('@/i18n/ko.json')).default,
+  pt: (await import('@/i18n/pt.json')).default,
+  ru: (await import('@/i18n/ru.json')).default,
+  ar: (await import('@/i18n/ar.json')).default,
+};
+
+const dict = allTranslations[lang] ?? allTranslations.en;
+const t = makeTranslator(dict);
+const canonical = `${SITE_URL}/${lang}`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/` : `${SITE_URL}/${l}`,
+}));
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+};
+
+const bmiHref = `/${lang}/bmi-calculator`;
+const bmrHref = `/${lang}/bmr-calculator`;
+const tdeeHref = `/${lang}/tdee-calculator`;
+---
+<BaseLayout
+  title={t('meta.home_title')}
+  description={t('meta.home_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  schema={schema}
+  currentPath={`/${lang}`}
+>
+  <section class="text-center mb-14">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+      {t('home.hero_title')}
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">{t('home.hero_desc')}</p>
+  </section>
+
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <CalculatorCard title={t('bmi.title')} description={t('bmi.desc')} href={bmiHref} icon="⚖️" />
+    <CalculatorCard title={t('bmr.title')} description={t('bmr.desc')} href={bmrHref} icon="🔥" />
+    <CalculatorCard title={t('tdee.title')} description={t('tdee.desc')} href={tdeeHref} icon="⚡" />
+  </section>
+
+  <section class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+    <h2 class="text-2xl font-bold text-gray-800 mb-3">About {SITE_NAME}</h2>
+    <p class="text-gray-600 leading-relaxed">{t('home.about')}</p>
+  </section>
+</BaseLayout>

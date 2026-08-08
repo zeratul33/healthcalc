@@ -1,0 +1,98 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AdSlot from '@/components/AdSlot.astro';
+import BMICalculator from '@/components/calculators/BMICalculator';
+import { SITE_URL, SUPPORTED_LANGS } from '@/consts';
+import en from '@/i18n/en.json';
+import { makeTranslator } from '@/i18n/utils';
+
+const t = makeTranslator(en);
+const lang = 'en';
+const canonical = `${SITE_URL}/bmi-calculator`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/bmi-calculator` : `${SITE_URL}/${l}/bmi-calculator`,
+}));
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'BMI Calculator',
+    applicationCategory: 'HealthApplication',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    url: canonical,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is a healthy BMI range?', acceptedAnswer: { '@type': 'Answer', text: 'A healthy BMI is between 18.5 and 24.9. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is obese.' } },
+      { '@type': 'Question', name: 'Is BMI accurate for everyone?', acceptedAnswer: { '@type': 'Answer', text: 'BMI is a useful screening tool but has limitations. It does not account for muscle mass, bone density, or fat distribution. Athletes may have a high BMI but low body fat.' } },
+      { '@type': 'Question', name: 'How is BMI calculated?', acceptedAnswer: { '@type': 'Answer', text: 'BMI is calculated by dividing your weight in kilograms by the square of your height in meters: BMI = kg / m².' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={t('meta.bmi_title')}
+  description={t('meta.bmi_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  schema={schema}
+  currentPath="/bmi-calculator"
+>
+  <div class="max-w-3xl mx-auto">
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-3">{t('bmi.title')}</h1>
+      <p class="text-lg text-gray-600">{t('bmi.desc')}</p>
+    </header>
+
+    <BMICalculator client:load dict={en} />
+    <AdSlot />
+
+    <article class="prose prose-green max-w-none mt-10">
+      <h2>What is BMI?</h2>
+      <p>Body Mass Index (BMI) is a numerical value calculated from a person's weight and height. It provides a widely-used screening tool to identify whether an individual is underweight, normal weight, overweight, or obese. BMI was developed by Belgian mathematician Adolphe Quetelet in the 19th century and has been adopted by health organizations worldwide as a simple, cost-free way to assess weight-related health risk.</p>
+      <p>While BMI is not a diagnostic tool, it serves as a useful starting point for identifying potential weight-related health problems. A high BMI can be an indicator of high body fatness, while a low BMI may signal malnutrition. Healthcare providers use BMI alongside other clinical data to assess a patient's overall health status.</p>
+
+      <h2>BMI Formula</h2>
+      <p>The standard BMI formula uses metric measurements: <strong>BMI = weight (kg) ÷ height² (m²)</strong>. For imperial measurements, the formula adapts to: BMI = 703 × weight (lbs) ÷ height² (inches²). Our calculator supports both systems automatically, so you can enter your measurements in whichever unit you prefer.</p>
+
+      <h2>BMI Categories and Health Implications</h2>
+      <p>The World Health Organization defines four standard BMI categories for adults. Individuals with a BMI <strong>below 18.5</strong> are classified as underweight, which may indicate malnutrition or other health conditions requiring medical attention. A BMI between <strong>18.5 and 24.9</strong> falls within the normal weight range, associated with the lowest risk of weight-related diseases. People with a BMI of <strong>25 to 29.9</strong> are considered overweight — they carry increased risk of cardiovascular disease, type 2 diabetes, and sleep apnea. A BMI of <strong>30 or above</strong> is classified as obese, with significantly elevated risk for chronic conditions including heart disease, stroke, and certain cancers.</p>
+      <p>It's worth noting that BMI thresholds for Asian populations may differ; some guidelines suggest that health risks increase at lower BMI values for people of Asian descent, starting at 23 for overweight and 27.5 for obese.</p>
+
+      <h2>Limitations of BMI</h2>
+      <p>BMI is a population-level screening tool, not a direct measure of body fat percentage. Its key limitations include: it cannot distinguish between muscle and fat mass — a bodybuilder may have a "obese" BMI despite very low body fat; it does not reflect fat distribution, which is clinically important (abdominal fat is more dangerous than hip/thigh fat); it may overestimate health risk in highly muscular individuals and underestimate it in those with low muscle mass but high fat content (a condition sometimes called "normal weight obesity"); and it does not account for age, sex, or ethnicity differences in body composition.</p>
+      <p>For a more complete picture of health, use BMI alongside other measurements such as waist circumference, waist-to-hip ratio, and body fat percentage when available.</p>
+
+      <h2>How to Use This Calculator</h2>
+      <p>Using our BMI calculator is simple. Select your preferred unit system (metric or imperial), enter your current weight and height, and click "Calculate BMI." Your result will display instantly along with your BMI category and a visual indicator showing where your score falls on the scale. The results are based on the standard WHO BMI formula and are suitable for adults aged 18 and over. For children and teenagers, different BMI-for-age charts are used.</p>
+    </article>
+
+    <section class="mt-12" aria-label="Frequently Asked Questions">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">What is a healthy BMI?</summary>
+          <p class="mt-3 text-gray-600">A healthy BMI falls between 18.5 and 24.9 for most adults. This range is associated with the lowest risk of weight-related diseases. However, "healthy" varies by individual — consult your doctor for personalized guidance.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Is BMI accurate for athletes and bodybuilders?</summary>
+          <p class="mt-3 text-gray-600">Not always. BMI cannot distinguish between fat and muscle mass. Highly muscular individuals may have a high BMI while having very low body fat. For athletes, consider body fat percentage testing for a more accurate assessment.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">How often should I check my BMI?</summary>
+          <p class="mt-3 text-gray-600">Checking your BMI once or twice a year is typically sufficient for healthy adults. If you are actively trying to lose or gain weight, checking monthly can help you track progress alongside other measurements like waist circumference.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Does BMI differ by age?</summary>
+          <p class="mt-3 text-gray-600">The standard BMI categories apply to adults 18 and older. For children and teenagers, BMI is interpreted using age- and sex-specific growth charts (BMI-for-age percentiles), as body composition changes significantly during growth.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

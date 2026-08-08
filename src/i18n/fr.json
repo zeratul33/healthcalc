@@ -1,0 +1,60 @@
+{
+  "nav": { "home": "Accueil", "bmi": "Calculateur IMC", "bmr": "Calculateur MB", "tdee": "Calculateur TDEE" },
+  "home": {
+    "hero_title": "Calculateurs de Santé et Fitness Gratuits",
+    "hero_desc": "Des outils scientifiques pour comprendre votre corps, fixer des objectifs réalistes et prendre des décisions éclairées en matière de santé.",
+    "about": "HealthCalc propose des calculateurs de santé gratuits basés sur des formules scientifiques éprouvées pour suivre l'IMC, calculer votre taux métabolique et planifier votre nutrition."
+  },
+  "bmi": {
+    "title": "Calculateur d'IMC",
+    "desc": "Calculez votre Indice de Masse Corporelle pour comprendre votre poids par rapport à votre taille.",
+    "weight": "Poids", "height": "Taille", "calculate": "Calculer l'IMC",
+    "your_bmi": "Votre IMC", "underweight": "Insuffisance pondérale", "normal": "Poids normal",
+    "overweight": "Surpoids", "obese": "Obésité",
+    "unit_metric": "Métrique (kg/cm)", "unit_imperial": "Impérial (lbs/pieds)",
+    "lbs": "lbs", "ft": "pieds", "in": "pouces"
+  },
+  "bmr": {
+    "title": "Calculateur de MB",
+    "desc": "Calculez votre Métabolisme de Base — les calories que votre corps brûle au repos.",
+    "gender": "Sexe", "age": "Âge", "male": "Homme", "female": "Femme",
+    "weight": "Poids", "height": "Taille", "calculate": "Calculer le MB",
+    "your_bmr": "Votre MB", "result_desc": "calories par jour au repos complet"
+  },
+  "tdee": {
+    "title": "Calculateur TDEE",
+    "desc": "Calculez votre Dépense Énergétique Totale Journalière selon votre niveau d'activité.",
+    "gender": "Sexe", "age": "Âge", "male": "Homme", "female": "Femme",
+    "weight": "Poids", "height": "Taille",
+    "activity": "Niveau d'activité",
+    "sedentary": "Sédentaire (peu ou pas d'exercice)",
+    "lightly_active": "Légèrement actif (1-3 jours/semaine)",
+    "moderately_active": "Modérément actif (3-5 jours/semaine)",
+    "very_active": "Très actif (6-7 jours/semaine)",
+    "extra_active": "Extra actif (exercice très intense/travail physique)",
+    "calculate": "Calculer le TDEE",
+    "your_tdee": "Votre TDEE",
+    "maintenance": "Maintien",
+    "weight_loss": "Perte de poids (−500 kcal)",
+    "weight_gain": "Prise de poids (+500 kcal)",
+    "result_desc": "calories par jour"
+  },
+  "units": { "kg": "kg", "cm": "cm", "years": "ans", "kcal": "kcal/jour" },
+  "errors": {
+    "required": "Ce champ est obligatoire.",
+    "positive": "Veuillez entrer un nombre positif.",
+    "weight_range": "Veuillez entrer un poids entre 20 et 500 kg.",
+    "height_range": "Veuillez entrer une taille entre 50 et 300 cm.",
+    "age_range": "Veuillez entrer un âge entre 1 et 120."
+  },
+  "meta": {
+    "bmi_title": "Calculateur d'IMC — Outil Gratuit | HealthCalc",
+    "bmi_desc": "Calculez votre Indice de Masse Corporelle (IMC) instantanément. Outil gratuit avec support métrique et impérial.",
+    "bmr_title": "Calculateur de MB — Métabolisme de Base | HealthCalc",
+    "bmr_desc": "Calculez votre Métabolisme de Base (MB) avec l'équation de Mifflin-St Jeor.",
+    "tdee_title": "Calculateur TDEE — Dépense Énergétique Journalière | HealthCalc",
+    "tdee_desc": "Calculez votre Dépense Énergétique Totale Journalière (TDEE) selon votre niveau d'activité.",
+    "home_title": "Calculateurs de Santé Gratuits | HealthCalc",
+    "home_desc": "Calculateurs de santé gratuits : IMC, MB et TDEE. Des outils scientifiques pour atteindre vos objectifs."
+  }
+}

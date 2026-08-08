@@ -1,0 +1,60 @@
+{
+  "nav": { "home": "Startseite", "bmi": "BMI-Rechner", "bmr": "BMR-Rechner", "tdee": "TDEE-Rechner" },
+  "home": {
+    "hero_title": "Kostenlose Gesundheits- und Fitnessrechner",
+    "hero_desc": "Wissenschaftlich fundierte Tools, die Ihnen helfen, Ihren Körper zu verstehen, realistische Ziele zu setzen und fundierte Gesundheitsentscheidungen zu treffen.",
+    "about": "HealthCalc bietet kostenlose Gesundheitsrechner auf Basis bewährter wissenschaftlicher Formeln zur Verfolgung des BMI, Berechnung Ihrer Stoffwechselrate und Ernährungsplanung."
+  },
+  "bmi": {
+    "title": "BMI-Rechner",
+    "desc": "Berechnen Sie Ihren Body-Mass-Index, um Ihr Gewicht im Verhältnis zur Körpergröße zu verstehen.",
+    "weight": "Gewicht", "height": "Größe", "calculate": "BMI berechnen",
+    "your_bmi": "Ihr BMI", "underweight": "Untergewicht", "normal": "Normalgewicht",
+    "overweight": "Übergewicht", "obese": "Adipositas",
+    "unit_metric": "Metrisch (kg/cm)", "unit_imperial": "Imperial (lbs/ft)",
+    "lbs": "lbs", "ft": "ft", "in": "in"
+  },
+  "bmr": {
+    "title": "BMR-Rechner",
+    "desc": "Berechnen Sie Ihren Grundumsatz — die Kalorien, die Ihr Körper im Ruhezustand verbrennt.",
+    "gender": "Geschlecht", "age": "Alter", "male": "Männlich", "female": "Weiblich",
+    "weight": "Gewicht", "height": "Größe", "calculate": "BMR berechnen",
+    "your_bmr": "Ihr BMR", "result_desc": "Kalorien pro Tag bei vollständiger Ruhe"
+  },
+  "tdee": {
+    "title": "TDEE-Rechner",
+    "desc": "Berechnen Sie Ihren täglichen Gesamtenergieverbrauch basierend auf Ihrem Aktivitätsniveau.",
+    "gender": "Geschlecht", "age": "Alter", "male": "Männlich", "female": "Weiblich",
+    "weight": "Gewicht", "height": "Größe",
+    "activity": "Aktivitätsniveau",
+    "sedentary": "Sitzend (wenig oder keine Bewegung)",
+    "lightly_active": "Leicht aktiv (1-3 Tage/Woche)",
+    "moderately_active": "Mäßig aktiv (3-5 Tage/Woche)",
+    "very_active": "Sehr aktiv (6-7 Tage/Woche)",
+    "extra_active": "Extrem aktiv (sehr hartes Training/körperliche Arbeit)",
+    "calculate": "TDEE berechnen",
+    "your_tdee": "Ihr TDEE",
+    "maintenance": "Erhaltung",
+    "weight_loss": "Gewichtsverlust (−500 kcal)",
+    "weight_gain": "Gewichtszunahme (+500 kcal)",
+    "result_desc": "Kalorien pro Tag"
+  },
+  "units": { "kg": "kg", "cm": "cm", "years": "Jahre", "kcal": "kcal/Tag" },
+  "errors": {
+    "required": "Dieses Feld ist erforderlich.",
+    "positive": "Bitte geben Sie eine positive Zahl ein.",
+    "weight_range": "Bitte geben Sie ein Gewicht zwischen 20 und 500 kg ein.",
+    "height_range": "Bitte geben Sie eine Größe zwischen 50 und 300 cm ein.",
+    "age_range": "Bitte geben Sie ein Alter zwischen 1 und 120 ein."
+  },
+  "meta": {
+    "bmi_title": "BMI-Rechner — Kostenloses Body-Mass-Index Tool | HealthCalc",
+    "bmi_desc": "Berechnen Sie Ihren Body-Mass-Index (BMI) sofort. Kostenloser Online-BMI-Rechner mit metrischer und imperialer Unterstützung.",
+    "bmr_title": "BMR-Rechner — Grundumsatz berechnen | HealthCalc",
+    "bmr_desc": "Berechnen Sie Ihren Grundumsatz (BMR) mit der Mifflin-St Jeor Gleichung.",
+    "tdee_title": "TDEE-Rechner — Täglicher Gesamtenergieverbrauch | HealthCalc",
+    "tdee_desc": "Berechnen Sie Ihren täglichen Gesamtenergieverbrauch (TDEE) basierend auf Ihrem Aktivitätsniveau.",
+    "home_title": "Kostenlose Gesundheitsrechner | HealthCalc",
+    "home_desc": "Kostenlose Online-Gesundheitsrechner: BMI, BMR und TDEE. Wissenschaftlich fundierte Tools für Ihre Gesundheitsziele."
+  }
+}

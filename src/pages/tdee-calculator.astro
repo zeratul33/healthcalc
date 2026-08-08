@@ -1,0 +1,102 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AdSlot from '@/components/AdSlot.astro';
+import TDEECalculator from '@/components/calculators/TDEECalculator';
+import { SITE_URL, SUPPORTED_LANGS } from '@/consts';
+import en from '@/i18n/en.json';
+import { makeTranslator } from '@/i18n/utils';
+
+const t = makeTranslator(en);
+const lang = 'en';
+const canonical = `${SITE_URL}/tdee-calculator`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/tdee-calculator` : `${SITE_URL}/${l}/tdee-calculator`,
+}));
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'TDEE Calculator',
+    applicationCategory: 'HealthApplication',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    url: canonical,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is TDEE?', acceptedAnswer: { '@type': 'Answer', text: 'TDEE stands for Total Daily Energy Expenditure — the total number of calories your body burns in a day, including all physical activity and exercise on top of your basal metabolic rate.' } },
+      { '@type': 'Question', name: 'How much below TDEE should I eat to lose weight?', acceptedAnswer: { '@type': 'Answer', text: 'A deficit of 300–500 calories below TDEE per day is a sustainable approach for gradual weight loss of about 0.3–0.5 kg per week. Larger deficits can be used short-term but increase muscle loss risk.' } },
+      { '@type': 'Question', name: 'Why is my TDEE higher than my BMR?', acceptedAnswer: { '@type': 'Answer', text: 'TDEE is always higher than BMR because it includes all the energy used for physical activity, digestion (thermic effect of food), and non-exercise activity thermogenesis (NEAT) on top of your resting metabolic rate.' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={t('meta.tdee_title')}
+  description={t('meta.tdee_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  schema={schema}
+  currentPath="/tdee-calculator"
+>
+  <div class="max-w-3xl mx-auto">
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-3">{t('tdee.title')}</h1>
+      <p class="text-lg text-gray-600">{t('tdee.desc')}</p>
+    </header>
+
+    <TDEECalculator client:load dict={en} />
+    <AdSlot />
+
+    <article class="prose prose-green max-w-none mt-10">
+      <h2>What is TDEE?</h2>
+      <p>Total Daily Energy Expenditure (TDEE) is the total number of calories your body burns in a 24-hour period, accounting for all physical activity and biological processes. Unlike Basal Metabolic Rate (BMR), which only measures calories burned at rest, TDEE provides a complete picture of your daily energy needs, making it the most useful number for designing a diet to reach any weight goal.</p>
+      <p>Understanding your TDEE allows you to make precise, evidence-based adjustments to your calorie intake. Whether you want to lose weight, gain muscle, or simply maintain your current physique, TDEE is your starting point.</p>
+
+      <h2>How TDEE is Calculated</h2>
+      <p>TDEE is calculated by multiplying your BMR by an <strong>activity multiplier</strong> that reflects how physically active you are throughout the day. Our calculator uses the Harris-Benedict activity factors as refined by the Mifflin-St Jeor framework:</p>
+      <ul>
+        <li><strong>Sedentary (×1.2):</strong> Desk job, no structured exercise</li>
+        <li><strong>Lightly Active (×1.375):</strong> Light exercise 1–3 days per week</li>
+        <li><strong>Moderately Active (×1.55):</strong> Moderate exercise 3–5 days per week</li>
+        <li><strong>Very Active (×1.725):</strong> Hard exercise 6–7 days per week</li>
+        <li><strong>Extra Active (×1.9):</strong> Very hard training daily or a physical job</li>
+      </ul>
+      <p>Most sedentary office workers with light activity outside work fall in the 1.2–1.375 range. If you have a physically demanding job or train intensely for sports, your multiplier will be higher.</p>
+
+      <h2>Activity Levels Explained</h2>
+      <p>Choosing the right activity level is critical for getting an accurate TDEE. <strong>Sedentary</strong> means you move very little — you drive everywhere, sit at a desk all day, and rarely exercise. <strong>Lightly active</strong> typically means you do low-intensity workouts a few times a week (walking, yoga, light cycling). <strong>Moderately active</strong> describes people who exercise consistently 3–5 days per week at a moderate intensity (running, swimming, resistance training). <strong>Very active</strong> applies to athletes in heavy training or people with physically demanding jobs who also exercise. <strong>Extra active</strong> is for elite athletes or those doing twice-daily training sessions.</p>
+      <p>When in doubt, start with a lower activity level estimate. Most people overestimate their activity and end up eating above their true TDEE, which leads to gradual weight gain over time.</p>
+
+      <h2>Using TDEE for Diet Planning</h2>
+      <p>Once you know your TDEE, you can set calorie targets based on your goal. For <strong>weight loss</strong>, aim for 300–500 calories below your TDEE. This creates a caloric deficit that leads to gradual, sustainable fat loss without excessive muscle loss. A 500 kcal/day deficit theoretically creates a deficit of 3,500 kcal/week, equating to roughly 0.45 kg (1 lb) of fat loss per week.</p>
+      <p>For <strong>muscle gain</strong> ("bulking"), a modest surplus of 200–500 kcal/day above TDEE provides the extra energy and nutrients needed to build new muscle tissue. A large surplus only leads to additional fat gain. For <strong>maintenance</strong>, simply eat at your TDEE — this should keep your weight stable week over week.</p>
+
+      <h2>TDEE vs BMR: Key Differences</h2>
+      <p>BMR represents your body's minimum energy requirement at complete rest. TDEE is BMR multiplied by your activity level and always represents a larger number. For most moderately active adults, TDEE is 1.4–1.6× their BMR. The gap between BMR and TDEE widens with increased physical activity. Understanding both helps you set realistic calorie targets — never eat below your BMR for sustained periods, and always use TDEE as your baseline for dietary planning.</p>
+    </article>
+
+    <section class="mt-12" aria-label="Frequently Asked Questions">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">How accurate is the TDEE calculator?</summary>
+          <p class="mt-3 text-gray-600">TDEE calculators provide estimates based on population averages. Individual variation in metabolism means your true TDEE could differ by ±10–20%. Track your weight over 2–3 weeks while eating at calculated TDEE and adjust based on actual results.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Should I eat back exercise calories?</summary>
+          <p class="mt-3 text-gray-600">If you already account for exercise in your activity level selection, do not add extra calories for workouts — they are already included in your TDEE. If you choose "sedentary" and then exercise, you may add back a portion of burned calories, but this approach can be imprecise.</p>
+        </details>
+        <details class="border border-gray-200 rounded-xl p-4 bg-white">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Does TDEE change over time?</summary>
+          <p class="mt-3 text-gray-600">Yes. As your weight changes, your TDEE changes too. Recalculate your TDEE every 4–6 weeks, or whenever your weight changes by more than 5 kg. Also recalculate if your activity level changes significantly.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

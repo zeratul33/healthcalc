@@ -1,0 +1,60 @@
+{
+  "nav": { "home": "ホーム", "bmi": "BMI計算機", "bmr": "BMR計算機", "tdee": "TDEE計算機" },
+  "home": {
+    "hero_title": "無料の健康・フィットネス計算機",
+    "hero_desc": "科学的根拠に基づいたツールで、自分の体を理解し、現実的な目標を設定し、健康に関する賢明な決断を下せます。",
+    "about": "HealthCalcは実証済みの科学的な公式に基づいた無料の健康計算機を提供しています。BMIの追跡、代謝率の計算、栄養計画を自信を持って行えます。"
+  },
+  "bmi": {
+    "title": "BMI計算機",
+    "desc": "身長に対する体重の関係を理解するためにBMIを計算します。",
+    "weight": "体重", "height": "身長", "calculate": "BMIを計算",
+    "your_bmi": "あなたのBMI", "underweight": "低体重", "normal": "普通体重",
+    "overweight": "過体重", "obese": "肥満",
+    "unit_metric": "メートル法 (kg/cm)", "unit_imperial": "ヤード法 (lbs/ft)",
+    "lbs": "lbs", "ft": "ft", "in": "in"
+  },
+  "bmr": {
+    "title": "BMR計算機",
+    "desc": "基礎代謝量（安静時に体が消費するカロリー）を計算します。",
+    "gender": "性別", "age": "年齢", "male": "男性", "female": "女性",
+    "weight": "体重", "height": "身長", "calculate": "BMRを計算",
+    "your_bmr": "あなたのBMR", "result_desc": "完全な安静状態での1日あたりのカロリー"
+  },
+  "tdee": {
+    "title": "TDEE計算機",
+    "desc": "活動レベルに基づいて1日の総エネルギー消費量を計算します。",
+    "gender": "性別", "age": "年齢", "male": "男性", "female": "女性",
+    "weight": "体重", "height": "身長",
+    "activity": "活動レベル",
+    "sedentary": "座位中心（運動なし）",
+    "lightly_active": "軽度活動（週1-3日）",
+    "moderately_active": "中程度活動（週3-5日）",
+    "very_active": "高活動（週6-7日）",
+    "extra_active": "超高活動（非常に激しい運動/肉体労働）",
+    "calculate": "TDEEを計算",
+    "your_tdee": "あなたのTDEE",
+    "maintenance": "維持カロリー",
+    "weight_loss": "体重減少（-500kcal）",
+    "weight_gain": "体重増加（+500kcal）",
+    "result_desc": "1日あたりのカロリー"
+  },
+  "units": { "kg": "kg", "cm": "cm", "years": "歳", "kcal": "kcal/日" },
+  "errors": {
+    "required": "この項目は必須です。",
+    "positive": "正の数を入力してください。",
+    "weight_range": "20〜500kgの体重を入力してください。",
+    "height_range": "50〜300cmの身長を入力してください。",
+    "age_range": "1〜120の年齢を入力してください。"
+  },
+  "meta": {
+    "bmi_title": "BMI計算機 — 無料ボディマス指数ツール | HealthCalc",
+    "bmi_desc": "BMI（ボディマス指数）を即座に計算。メートル法とヤード法をサポートする無料オンラインBMI計算機。",
+    "bmr_title": "BMR計算機 — 基礎代謝量 | HealthCalc",
+    "bmr_desc": "Mifflin-St Jeor方程式を使用してBMR（基礎代謝量）を計算します。",
+    "tdee_title": "TDEE計算機 — 1日の総エネルギー消費量 | HealthCalc",
+    "tdee_desc": "活動レベルに基づいてTDEE（1日の総エネルギー消費量）を計算します。",
+    "home_title": "無料健康・フィットネス計算機 | HealthCalc",
+    "home_desc": "無料オンライン健康計算機：BMI、BMR、TDEE。科学的根拠に基づいたツールで健康目標を達成しましょう。"
+  }
+}

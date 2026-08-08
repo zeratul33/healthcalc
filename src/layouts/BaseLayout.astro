@@ -1,0 +1,53 @@
+---
+import SEOHead from '@/components/SEOHead.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { SITE_URL } from '@/consts';
+
+interface Alternate {
+  lang: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  lang?: string;
+  alternates?: Alternate[];
+  schema?: object | object[];
+  currentPath?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  lang = 'en',
+  alternates = [],
+  schema,
+  currentPath = '',
+} = Astro.props;
+
+const dir = lang === 'ar' ? 'rtl' : 'ltr';
+---
+<!doctype html>
+<html lang={lang} dir={dir} class="scroll-smooth">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      lang={lang}
+      alternates={alternates}
+      schema={schema}
+    />
+  </head>
+  <body class="bg-[#f8fafc] text-gray-900 min-h-screen flex flex-col">
+    <Header lang={lang} currentPath={currentPath} />
+    <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

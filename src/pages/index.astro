@@ -1,0 +1,68 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CalculatorCard from '@/components/CalculatorCard.astro';
+import { SITE_URL, SITE_NAME, SUPPORTED_LANGS } from '@/consts';
+import en from '@/i18n/en.json';
+import { makeTranslator } from '@/i18n/utils';
+
+const t = makeTranslator(en);
+const lang = 'en';
+const canonical = `${SITE_URL}/`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/` : `${SITE_URL}/${l}`,
+}));
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+};
+---
+<BaseLayout
+  title={t('meta.home_title')}
+  description={t('meta.home_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  schema={schema}
+  currentPath="/"
+>
+  <!-- Hero -->
+  <section class="text-center mb-14">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+      {t('home.hero_title')}
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">{t('home.hero_desc')}</p>
+  </section>
+
+  <!-- Calculator cards -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <CalculatorCard
+      title={t('bmi.title')}
+      description={t('bmi.desc')}
+      href="/bmi-calculator"
+      icon="⚖️"
+    />
+    <CalculatorCard
+      title={t('bmr.title')}
+      description={t('bmr.desc')}
+      href="/bmr-calculator"
+      icon="🔥"
+    />
+    <CalculatorCard
+      title={t('tdee.title')}
+      description={t('tdee.desc')}
+      href="/tdee-calculator"
+      icon="⚡"
+    />
+  </section>
+
+  <!-- About section -->
+  <section class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+    <h2 class="text-2xl font-bold text-gray-800 mb-3">About {SITE_NAME}</h2>
+    <p class="text-gray-600 leading-relaxed">{t('home.about')}</p>
+  </section>
+</BaseLayout>

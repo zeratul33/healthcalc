@@ -1,0 +1,60 @@
+{
+  "nav": { "home": "Home", "bmi": "BMI Calculator", "bmr": "BMR Calculator", "tdee": "TDEE Calculator" },
+  "home": {
+    "hero_title": "Free Health & Fitness Calculators",
+    "hero_desc": "Science-backed tools to help you understand your body, set realistic goals, and make informed health decisions.",
+    "about": "HealthCalc provides free, accurate health calculators based on proven scientific formulas. Our tools help you track BMI, calculate your metabolic rate, and plan your nutrition with confidence."
+  },
+  "bmi": {
+    "title": "BMI Calculator",
+    "desc": "Calculate your Body Mass Index to understand your weight relative to your height.",
+    "weight": "Weight", "height": "Height", "calculate": "Calculate BMI",
+    "your_bmi": "Your BMI", "underweight": "Underweight", "normal": "Normal weight",
+    "overweight": "Overweight", "obese": "Obese",
+    "unit_metric": "Metric (kg/cm)", "unit_imperial": "Imperial (lbs/ft)",
+    "lbs": "lbs", "ft": "ft", "in": "in"
+  },
+  "bmr": {
+    "title": "BMR Calculator",
+    "desc": "Calculate your Basal Metabolic Rate — the calories your body burns at rest.",
+    "gender": "Gender", "age": "Age", "male": "Male", "female": "Female",
+    "weight": "Weight", "height": "Height", "calculate": "Calculate BMR",
+    "your_bmr": "Your BMR", "result_desc": "calories per day at complete rest"
+  },
+  "tdee": {
+    "title": "TDEE Calculator",
+    "desc": "Calculate your Total Daily Energy Expenditure based on your activity level.",
+    "gender": "Gender", "age": "Age", "male": "Male", "female": "Female",
+    "weight": "Weight", "height": "Height",
+    "activity": "Activity Level",
+    "sedentary": "Sedentary (little or no exercise)",
+    "lightly_active": "Lightly Active (1-3 days/week)",
+    "moderately_active": "Moderately Active (3-5 days/week)",
+    "very_active": "Very Active (6-7 days/week)",
+    "extra_active": "Extra Active (very hard exercise, physical job)",
+    "calculate": "Calculate TDEE",
+    "your_tdee": "Your TDEE",
+    "maintenance": "Maintenance",
+    "weight_loss": "Weight Loss (−500 kcal)",
+    "weight_gain": "Weight Gain (+500 kcal)",
+    "result_desc": "calories per day"
+  },
+  "units": { "kg": "kg", "cm": "cm", "years": "years", "kcal": "kcal/day" },
+  "errors": {
+    "required": "This field is required.",
+    "positive": "Please enter a positive number.",
+    "weight_range": "Please enter a weight between 20–500 kg.",
+    "height_range": "Please enter a height between 50–300 cm.",
+    "age_range": "Please enter an age between 1–120."
+  },
+  "meta": {
+    "bmi_title": "BMI Calculator — Free Body Mass Index Tool | HealthCalc",
+    "bmi_desc": "Calculate your Body Mass Index (BMI) instantly. Free online BMI calculator with metric and imperial support. Understand your weight category and health implications.",
+    "bmr_title": "BMR Calculator — Basal Metabolic Rate | HealthCalc",
+    "bmr_desc": "Calculate your Basal Metabolic Rate (BMR) using the Mifflin-St Jeor equation. Find out how many calories your body burns at rest.",
+    "tdee_title": "TDEE Calculator — Total Daily Energy Expenditure | HealthCalc",
+    "tdee_desc": "Calculate your Total Daily Energy Expenditure (TDEE) based on your activity level. Get personalized calorie targets for weight loss, maintenance, or muscle gain.",
+    "home_title": "Free Health & Fitness Calculators | HealthCalc",
+    "home_desc": "Free online health calculators: BMI, BMR, and TDEE. Science-backed tools to help you understand your body and achieve your health goals."
+  }
+}

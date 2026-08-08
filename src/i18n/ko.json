@@ -1,0 +1,60 @@
+{
+  "nav": { "home": "홈", "bmi": "BMI 계산기", "bmr": "BMR 계산기", "tdee": "TDEE 계산기" },
+  "home": {
+    "hero_title": "무료 건강 및 피트니스 계산기",
+    "hero_desc": "과학적 근거를 바탕으로 신체를 이해하고, 현실적인 목표를 설정하며, 건강한 결정을 내릴 수 있는 도구.",
+    "about": "HealthCalc는 BMI 추적, 대사율 계산, 영양 계획을 위한 검증된 과학적 공식 기반의 무료 건강 계산기를 제공합니다."
+  },
+  "bmi": {
+    "title": "BMI 계산기",
+    "desc": "신장 대비 체중을 이해하기 위해 체질량지수를 계산합니다.",
+    "weight": "체중", "height": "신장", "calculate": "BMI 계산",
+    "your_bmi": "나의 BMI", "underweight": "저체중", "normal": "정상 체중",
+    "overweight": "과체중", "obese": "비만",
+    "unit_metric": "미터법 (kg/cm)", "unit_imperial": "야드법 (lbs/ft)",
+    "lbs": "lbs", "ft": "ft", "in": "in"
+  },
+  "bmr": {
+    "title": "BMR 계산기",
+    "desc": "기초 대사량 — 안정 시 신체가 소모하는 칼로리를 계산합니다.",
+    "gender": "성별", "age": "나이", "male": "남성", "female": "여성",
+    "weight": "체중", "height": "신장", "calculate": "BMR 계산",
+    "your_bmr": "나의 BMR", "result_desc": "완전한 안정 상태에서 하루 소모 칼로리"
+  },
+  "tdee": {
+    "title": "TDEE 계산기",
+    "desc": "활동 수준에 따라 하루 총 에너지 소비량을 계산합니다.",
+    "gender": "성별", "age": "나이", "male": "남성", "female": "여성",
+    "weight": "체중", "height": "신장",
+    "activity": "활동 수준",
+    "sedentary": "좌식 (운동 거의 없음)",
+    "lightly_active": "가볍게 활동 (주 1-3일)",
+    "moderately_active": "중간 활동 (주 3-5일)",
+    "very_active": "활동적 (주 6-7일)",
+    "extra_active": "매우 활동적 (고강도 운동/육체 노동)",
+    "calculate": "TDEE 계산",
+    "your_tdee": "나의 TDEE",
+    "maintenance": "유지 칼로리",
+    "weight_loss": "체중 감량 (−500 kcal)",
+    "weight_gain": "체중 증가 (+500 kcal)",
+    "result_desc": "하루 칼로리"
+  },
+  "units": { "kg": "kg", "cm": "cm", "years": "세", "kcal": "kcal/일" },
+  "errors": {
+    "required": "이 항목은 필수입니다.",
+    "positive": "양수를 입력하세요.",
+    "weight_range": "20~500kg 사이의 체중을 입력하세요.",
+    "height_range": "50~300cm 사이의 신장을 입력하세요.",
+    "age_range": "1~120 사이의 나이를 입력하세요."
+  },
+  "meta": {
+    "bmi_title": "BMI 계산기 — 무료 체질량지수 도구 | HealthCalc",
+    "bmi_desc": "BMI(체질량지수)를 즉시 계산하세요. 미터법 및 야드법을 지원하는 무료 온라인 BMI 계산기.",
+    "bmr_title": "BMR 계산기 — 기초 대사량 | HealthCalc",
+    "bmr_desc": "Mifflin-St Jeor 공식을 사용하여 BMR(기초 대사량)을 계산합니다.",
+    "tdee_title": "TDEE 계산기 — 하루 총 에너지 소비량 | HealthCalc",
+    "tdee_desc": "활동 수준에 따라 TDEE(하루 총 에너지 소비량)를 계산합니다.",
+    "home_title": "무료 건강 계산기 | HealthCalc",
+    "home_desc": "무료 온라인 건강 계산기: BMI, BMR, TDEE. 건강 목표 달성을 위한 과학적 도구."
+  }
+}

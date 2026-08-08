@@ -1,0 +1,60 @@
+{
+  "nav": { "home": "Início", "bmi": "Calculadora IMC", "bmr": "Calculadora TMB", "tdee": "Calculadora TDEE" },
+  "home": {
+    "hero_title": "Calculadoras Gratuitas de Saúde e Fitness",
+    "hero_desc": "Ferramentas baseadas em ciência para ajudá-lo a entender seu corpo, definir metas realistas e tomar decisões informadas sobre saúde.",
+    "about": "HealthCalc oferece calculadoras de saúde gratuitas baseadas em fórmulas científicas comprovadas para rastrear o IMC, calcular sua taxa metabólica e planejar sua nutrição com confiança."
+  },
+  "bmi": {
+    "title": "Calculadora de IMC",
+    "desc": "Calcule seu Índice de Massa Corporal para entender seu peso em relação à sua altura.",
+    "weight": "Peso", "height": "Altura", "calculate": "Calcular IMC",
+    "your_bmi": "Seu IMC", "underweight": "Abaixo do peso", "normal": "Peso normal",
+    "overweight": "Acima do peso", "obese": "Obesidade",
+    "unit_metric": "Métrico (kg/cm)", "unit_imperial": "Imperial (lbs/pés)",
+    "lbs": "lbs", "ft": "pés", "in": "polegadas"
+  },
+  "bmr": {
+    "title": "Calculadora de TMB",
+    "desc": "Calcule sua Taxa Metabólica Basal — as calorias que seu corpo queima em repouso.",
+    "gender": "Sexo", "age": "Idade", "male": "Masculino", "female": "Feminino",
+    "weight": "Peso", "height": "Altura", "calculate": "Calcular TMB",
+    "your_bmr": "Sua TMB", "result_desc": "calorias por dia em repouso completo"
+  },
+  "tdee": {
+    "title": "Calculadora de TDEE",
+    "desc": "Calcule seu Gasto Energético Total Diário com base no seu nível de atividade.",
+    "gender": "Sexo", "age": "Idade", "male": "Masculino", "female": "Feminino",
+    "weight": "Peso", "height": "Altura",
+    "activity": "Nível de atividade",
+    "sedentary": "Sedentário (pouco ou nenhum exercício)",
+    "lightly_active": "Levemente ativo (1-3 dias/semana)",
+    "moderately_active": "Moderadamente ativo (3-5 dias/semana)",
+    "very_active": "Muito ativo (6-7 dias/semana)",
+    "extra_active": "Extra ativo (exercício muito intenso/trabalho físico)",
+    "calculate": "Calcular TDEE",
+    "your_tdee": "Seu TDEE",
+    "maintenance": "Manutenção",
+    "weight_loss": "Perda de peso (−500 kcal)",
+    "weight_gain": "Ganho de peso (+500 kcal)",
+    "result_desc": "calorias por dia"
+  },
+  "units": { "kg": "kg", "cm": "cm", "years": "anos", "kcal": "kcal/dia" },
+  "errors": {
+    "required": "Este campo é obrigatório.",
+    "positive": "Por favor, insira um número positivo.",
+    "weight_range": "Por favor, insira um peso entre 20 e 500 kg.",
+    "height_range": "Por favor, insira uma altura entre 50 e 300 cm.",
+    "age_range": "Por favor, insira uma idade entre 1 e 120."
+  },
+  "meta": {
+    "bmi_title": "Calculadora de IMC — Ferramenta Gratuita | HealthCalc",
+    "bmi_desc": "Calcule seu Índice de Massa Corporal (IMC) instantaneamente. Calculadora gratuita com suporte métrico e imperial.",
+    "bmr_title": "Calculadora de TMB — Taxa Metabólica Basal | HealthCalc",
+    "bmr_desc": "Calcule sua Taxa Metabólica Basal (TMB) usando a equação de Mifflin-St Jeor.",
+    "tdee_title": "Calculadora de TDEE — Gasto Energético Total Diário | HealthCalc",
+    "tdee_desc": "Calcule seu Gasto Energético Total Diário (TDEE) com base no seu nível de atividade.",
+    "home_title": "Calculadoras Gratuitas de Saúde | HealthCalc",
+    "home_desc": "Calculadoras de saúde gratuitas: IMC, TMB e TDEE. Ferramentas científicas para alcançar seus objetivos de saúde."
+  }
+}
