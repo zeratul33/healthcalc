@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://zeratul33.github.io',
+  site: 'https://healthcalc.ciciad.tech',
   output: 'static',
   integrations: [react(), tailwind()],
   i18n: {
