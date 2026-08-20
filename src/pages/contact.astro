@@ -1,0 +1,68 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE_URL, SITE_NAME } from '@/consts';
+
+const canonical = `${SITE_URL}/contact`;
+const title = `Contact Us - ${SITE_NAME}`;
+const description = 'Get in touch with the HealthCalc team for feedback, suggestions, or bug reports.';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  lang="en"
+>
+  <article class="prose prose-lg max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">Contact Us</h1>
+
+    <section class="mb-8">
+      <p class="text-gray-700 leading-relaxed mb-4">
+        We appreciate your interest in {SITE_NAME}! Whether you have feedback, suggestions for new features, or want to report a bug, we'd love to hear from you.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        For general inquiries, feedback, or suggestions, you can reach us at:
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        <strong>Email:</strong> <a href="mailto:contact@healthcalc.app" class="text-green-600 hover:text-green-700 underline">contact@healthcalc.app</a>
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        We strive to respond to all inquiries within a few business days.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Report a Bug</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Found a technical issue or something not working as expected? Please let us know! When reporting a bug, it helps if you can include:
+      </p>
+      <ul class="list-disc pl-6 mb-4 text-gray-700">
+        <li>What browser and device you're using</li>
+        <li>A description of what happened</li>
+        <li>What you expected to happen instead</li>
+        <li>Steps to reproduce the issue</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        This information helps us identify and fix problems more quickly.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Feature Suggestions</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Have an idea for a new calculator or feature? We're always looking to improve {SITE_NAME} and make it more useful for our users. Feel free to share your suggestions—we carefully consider all feedback as we plan future updates.
+      </p>
+    </section>
+
+    <section class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg mt-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">Note on Medical Questions</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Please note that we cannot provide medical advice or answer health-related questions. If you have concerns about your health, weight, or nutritional needs, please consult with a qualified healthcare provider or registered dietitian.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

@@ -4,7 +4,7 @@ const year = new Date().getFullYear();
 ---
 <footer class="bg-gray-50 border-t border-gray-200 mt-16">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
         <div class="font-bold text-lg text-green-600 mb-2">{SITE_NAME}</div>
         <p class="text-sm text-gray-500">Free, science-backed health calculators for everyone.</p>
@@ -18,16 +18,28 @@ const year = new Date().getFullYear();
         </ul>
       </div>
       <div>
-        <div class="font-semibold text-gray-700 mb-2">Disclaimer</div>
-        <p class="text-sm text-gray-500">
-          This website provides general health information for educational purposes only.
-          It is not a substitute for professional medical advice, diagnosis, or treatment.
-          Always consult a qualified healthcare provider.
-        </p>
+        <div class="font-semibold text-gray-700 mb-2">Legal</div>
+        <ul class="space-y-1 text-sm text-gray-500">
+          <li><a href="/privacy-policy" class="hover:text-green-600">Privacy Policy</a></li>
+          <li><a href="/about" class="hover:text-green-600">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold text-gray-700 mb-2">Contact</div>
+        <ul class="space-y-1 text-sm text-gray-500">
+          <li><a href="/contact" class="hover:text-green-600">Contact Us</a></li>
+        </ul>
       </div>
     </div>
-    <div class="mt-8 pt-6 border-t border-gray-200 text-center text-xs text-gray-400">
-      &copy; {year} {SITE_NAME}. All rights reserved.
+    <div class="mt-8 pt-6 border-t border-gray-200">
+      <p class="text-xs text-gray-500 text-center mb-4">
+        This website provides general health information for educational purposes only.
+        It is not a substitute for professional medical advice, diagnosis, or treatment.
+        Always consult a qualified healthcare provider.
+      </p>
+      <p class="text-center text-xs text-gray-400">
+        &copy; {year} {SITE_NAME}. All rights reserved.
+      </p>
     </div>
   </div>
 </footer>

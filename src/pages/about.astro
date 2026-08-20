@@ -1,0 +1,93 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE_URL, SITE_NAME } from '@/consts';
+
+const canonical = `${SITE_URL}/about`;
+const title = `About Us - ${SITE_NAME}`;
+const description = 'Learn about HealthCalc, our mission to provide free, science-backed health calculators, and the formulas we use.';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  lang="en"
+>
+  <article class="prose prose-lg max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">About {SITE_NAME}</h1>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        {SITE_NAME} was created with a simple goal: to provide everyone with free, accessible, and scientifically accurate health calculation tools. We believe that understanding your body's basic metrics—like Body Mass Index (BMI), Basal Metabolic Rate (BMR), and Total Daily Energy Expenditure (TDEE)—should be straightforward and available to all, without registration, paywalls, or unnecessary complexity.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Our calculators are designed to help you make informed decisions about your health and fitness goals. Whether you're trying to lose weight, gain muscle, maintain your current physique, or simply understand your body better, our tools provide the foundational metrics you need.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Science-Backed Formulas</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        All of our calculators are built on validated scientific formulas and international health standards:
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-6">BMI Calculator</h3>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Our BMI (Body Mass Index) calculator uses the standard formula adopted by the World Health Organization (WHO). BMI is calculated by dividing your weight in kilograms by the square of your height in meters. The classification categories (underweight, normal weight, overweight, obese) follow WHO guidelines, which are recognized internationally as screening tools for weight-related health risks.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-6">BMR Calculator</h3>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Our BMR (Basal Metabolic Rate) calculator implements the Mifflin-St Jeor equation, which is considered one of the most accurate formulas for estimating resting energy expenditure. This equation was developed through extensive research and has been validated across diverse populations. It accounts for your weight, height, age, and biological sex to estimate the number of calories your body burns at complete rest.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-6">TDEE Calculator</h3>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Our TDEE (Total Daily Energy Expenditure) calculator builds upon your BMR by applying the Harris-Benedict activity multipliers. These multipliers account for different levels of physical activity, from sedentary lifestyles to very active routines. The result tells you approximately how many calories you burn per day, including all activities, which is essential for planning dietary needs for weight loss, maintenance, or gain.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Commitment to You</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>Privacy First:</strong> All calculations are performed entirely in your web browser. We do not collect, store, or transmit your personal health data. Your information never leaves your device.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>No Registration Required:</strong> Use all our calculators instantly without creating an account, providing an email address, or sharing any personal information.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>Completely Free:</strong> Our tools are free to use, now and always. We believe health information should be accessible to everyone.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>Ad-Supported:</strong> To keep our service free, we display ads through Google AdSense. We carefully balance monetization with user experience, ensuring ads don't interfere with the functionality of our calculators.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Continuous Improvement</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        We are committed to maintaining and improving {SITE_NAME}. We regularly review the latest research in health and nutrition science to ensure our calculators remain accurate and up-to-date. User feedback helps us identify areas for improvement and new features that would benefit our community.
+      </p>
+    </section>
+
+    <section class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg mt-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">Important Medical Disclaimer</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The calculators and information provided on {SITE_NAME} are for educational and informational purposes only. They are not intended to replace, substitute for, or serve as professional medical advice, diagnosis, or treatment.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>Always consult with a qualified healthcare provider before:</strong>
+      </p>
+      <ul class="list-disc pl-6 mb-4 text-gray-700">
+        <li>Starting any new diet or exercise program</li>
+        <li>Making significant changes to your eating habits</li>
+        <li>Using these metrics to guide weight loss or gain strategies</li>
+        <li>If you have any medical conditions or concerns</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed">
+        Individual health needs vary significantly, and a healthcare professional can provide personalized advice based on your complete medical history, current health status, and specific circumstances. Never disregard professional medical advice or delay seeking it because of information obtained from this website.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

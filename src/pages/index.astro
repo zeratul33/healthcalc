@@ -61,8 +61,50 @@ const schema = {
   </section>
 
   <!-- About section -->
-  <section class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+  <section class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100 mb-16">
     <h2 class="text-2xl font-bold text-gray-800 mb-3">About {SITE_NAME}</h2>
     <p class="text-gray-600 leading-relaxed">{t('home.about')}</p>
+  </section>
+
+  <!-- How It Works section -->
+  <section class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">How It Works: Understanding Your Health Metrics</h2>
+
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">What is BMI (Body Mass Index)?</h3>
+        <p class="text-gray-700 leading-relaxed">
+          Body Mass Index (BMI) is a screening tool that estimates whether your weight falls within a healthy range relative to your height. Calculated by dividing your weight in kilograms by the square of your height in meters, BMI provides a quick assessment of potential health risks associated with being underweight, overweight, or obese. While BMI doesn't measure body fat directly or account for muscle mass, it serves as a useful starting point for evaluating weight-related health concerns. The World Health Organization categorizes BMI values into ranges: underweight (below 18.5), normal weight (18.5-24.9), overweight (25-29.9), and obese (30 and above). These categories help identify individuals who may benefit from consulting healthcare providers about their weight.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">What is BMR (Basal Metabolic Rate)?</h3>
+        <p class="text-gray-700 leading-relaxed">
+          Basal Metabolic Rate (BMR) represents the minimum number of calories your body needs to maintain basic physiological functions while at complete rest. This includes breathing, circulation, cell production, nutrient processing, and temperature regulation. Your BMR accounts for approximately 60-75% of your total daily energy expenditure and is influenced by factors including your weight, height, age, and biological sex. Understanding your BMR is crucial because it establishes the baseline caloric needs your body requires just to stay alive. Our calculator uses the scientifically validated Mifflin-St Jeor equation, which has been proven accurate across diverse populations. Knowing your BMR helps you make informed decisions about caloric intake, whether your goal is weight loss, maintenance, or gain.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">What is TDEE (Total Daily Energy Expenditure)?</h3>
+        <p class="text-gray-700 leading-relaxed">
+          Total Daily Energy Expenditure (TDEE) estimates the total number of calories you burn in a full 24-hour period, including all physical activities. While BMR covers only resting metabolism, TDEE accounts for everything: walking, working, exercising, digesting food, and even fidgeting. TDEE is calculated by multiplying your BMR by an activity factor that corresponds to your lifestyle—ranging from sedentary (little to no exercise) to very active (intense exercise 6-7 days per week). This metric is essential for planning your nutrition because it tells you how many calories you need to consume to maintain your current weight. To lose weight, you'd eat below your TDEE; to gain weight, you'd eat above it; and to maintain, you'd match it.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Why These Metrics Matter for Your Health</h3>
+        <p class="text-gray-700 leading-relaxed">
+          Understanding your BMI, BMR, and TDEE empowers you to take control of your health journey with data-driven insights. BMI helps you assess whether your current weight may pose health risks and whether you should consult a healthcare provider. BMR reveals the minimum energy your body requires, preventing dangerously low caloric intake that can slow metabolism and harm health. TDEE provides the complete picture of your energy needs, enabling you to create realistic and sustainable nutrition plans aligned with your goals. Together, these three metrics form a comprehensive framework for understanding your body's needs and making informed decisions about diet and exercise.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Using the Calculators Together</h3>
+        <p class="text-gray-700 leading-relaxed">
+          For the most effective use of {SITE_NAME}, we recommend using all three calculators in sequence. Start with the BMI calculator to understand your current weight status and identify if weight management should be a priority. Next, calculate your BMR to learn your baseline caloric needs—this ensures you never cut calories too drastically, which can be counterproductive and unhealthy. Finally, use the TDEE calculator to determine your total daily caloric needs based on your activity level. With these three numbers, you can create a personalized nutrition plan: subtract 300-500 calories from your TDEE for gradual weight loss, add 300-500 for weight gain, or match it for maintenance. All calculations are performed locally in your browser, ensuring complete privacy—your health data never leaves your device.
+        </p>
+      </div>
+    </div>
   </section>
 </BaseLayout>
