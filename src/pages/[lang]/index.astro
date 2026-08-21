@@ -66,8 +66,40 @@ const tdeeHref = `/${lang}/tdee-calculator`;
     <CalculatorCard title={t('tdee.title')} description={t('tdee.desc')} href={tdeeHref} icon="⚡" />
   </section>
 
-  <section class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+  <section class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100 mb-16">
     <h2 class="text-2xl font-bold text-gray-800 mb-3">About {SITE_NAME}</h2>
     <p class="text-gray-600 leading-relaxed">{t('home.about')}</p>
+  </section>
+
+  <!-- How It Works section -->
+  <section class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">{t('how_it_works.section_title')}</h2>
+
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">{t('how_it_works.what_is_bmi_title')}</h3>
+        <p class="text-gray-700 leading-relaxed">{t('how_it_works.what_is_bmi_text')}</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">{t('how_it_works.what_is_bmr_title')}</h3>
+        <p class="text-gray-700 leading-relaxed">{t('how_it_works.what_is_bmr_text')}</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">{t('how_it_works.what_is_tdee_title')}</h3>
+        <p class="text-gray-700 leading-relaxed">{t('how_it_works.what_is_tdee_text')}</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">{t('how_it_works.why_matters_title')}</h3>
+        <p class="text-gray-700 leading-relaxed">{t('how_it_works.why_matters_text')}</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">{t('how_it_works.using_together_title')}</h3>
+        <p class="text-gray-700 leading-relaxed" set:html={t('how_it_works.using_together_text')}></p>
+      </div>
+    </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,103 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE_URL, SITE_NAME, SUPPORTED_LANGS } from '@/consts';
+import { makeTranslator } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  const nonEnglish = SUPPORTED_LANGS.filter((l) => l !== 'en');
+  return nonEnglish.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+// Dynamically import the translation for this lang
+const allTranslations: Record<string, Record<string, unknown>> = {
+  zh: (await import('@/i18n/zh.json')).default,
+  es: (await import('@/i18n/es.json')).default,
+  fr: (await import('@/i18n/fr.json')).default,
+  de: (await import('@/i18n/de.json')).default,
+  ja: (await import('@/i18n/ja.json')).default,
+  ko: (await import('@/i18n/ko.json')).default,
+  pt: (await import('@/i18n/pt.json')).default,
+  ru: (await import('@/i18n/ru.json')).default,
+  ar: (await import('@/i18n/ar.json')).default,
+};
+
+const dict = allTranslations[lang] ?? allTranslations.en;
+const t = makeTranslator(dict);
+const canonical = `${SITE_URL}/${lang}/about`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/about` : `${SITE_URL}/${l}/about`,
+}));
+---
+
+<BaseLayout
+  title={t('about.meta_title')}
+  description={t('about.meta_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  currentPath={`/${lang}/about`}
+>
+  <article class="prose prose-lg max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">{t('about.title')}</h1>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('about.mission_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('about.mission_text1')}</p>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('about.mission_text2')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('about.formulas_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('about.formulas_text')}</p>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-6">{t('about.bmi_calculator_title')}</h3>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('about.bmi_calculator_text')}</p>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-6">{t('about.bmr_calculator_title')}</h3>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('about.bmr_calculator_text')}</p>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-6">{t('about.tdee_calculator_title')}</h3>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('about.tdee_calculator_text')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('about.commitment_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>{t('about.commitment_privacy_title')}</strong> {t('about.commitment_privacy_text')}
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>{t('about.commitment_no_registration_title')}</strong> {t('about.commitment_no_registration_text')}
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>{t('about.commitment_free_title')}</strong> {t('about.commitment_free_text')}
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>{t('about.commitment_ad_supported_title')}</strong> {t('about.commitment_ad_supported_text')}
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('about.improvement_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('about.improvement_text')}></p>
+    </section>
+
+    <section class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg mt-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">{t('about.disclaimer_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('about.disclaimer_text1')}></p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>{t('about.disclaimer_consult_title')}</strong>
+      </p>
+      <ul class="list-disc pl-6 mb-4 text-gray-700">
+        <li>{t('about.disclaimer_item1')}</li>
+        <li>{t('about.disclaimer_item2')}</li>
+        <li>{t('about.disclaimer_item3')}</li>
+        <li>{t('about.disclaimer_item4')}</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed">{t('about.disclaimer_text2')}</p>
+    </section>
+  </article>
+</BaseLayout>

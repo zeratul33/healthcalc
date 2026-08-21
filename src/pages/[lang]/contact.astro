@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE_URL, SITE_NAME, SUPPORTED_LANGS } from '@/consts';
+import { makeTranslator } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  const nonEnglish = SUPPORTED_LANGS.filter((l) => l !== 'en');
+  return nonEnglish.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+// Dynamically import the translation for this lang
+const allTranslations: Record<string, Record<string, unknown>> = {
+  zh: (await import('@/i18n/zh.json')).default,
+  es: (await import('@/i18n/es.json')).default,
+  fr: (await import('@/i18n/fr.json')).default,
+  de: (await import('@/i18n/de.json')).default,
+  ja: (await import('@/i18n/ja.json')).default,
+  ko: (await import('@/i18n/ko.json')).default,
+  pt: (await import('@/i18n/pt.json')).default,
+  ru: (await import('@/i18n/ru.json')).default,
+  ar: (await import('@/i18n/ar.json')).default,
+};
+
+const dict = allTranslations[lang] ?? allTranslations.en;
+const t = makeTranslator(dict);
+const canonical = `${SITE_URL}/${lang}/contact`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/contact` : `${SITE_URL}/${l}/contact`,
+}));
+---
+
+<BaseLayout
+  title={t('contact.meta_title')}
+  description={t('contact.meta_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  currentPath={`/${lang}/contact`}
+>
+  <article class="prose prose-lg max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">{t('contact.title')}</h1>
+
+    <section class="mb-8">
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('contact.intro')}></p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('contact.get_in_touch_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('contact.get_in_touch_text')}</p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        <strong>{t('contact.email_label')}</strong> <a href="mailto:contact@healthcalc.app" class="text-green-600 hover:text-green-700 underline">contact@healthcalc.app</a>
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('contact.response_time')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('contact.report_bug_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('contact.report_bug_text')}</p>
+      <ul class="list-disc pl-6 mb-4 text-gray-700">
+        <li>{t('contact.bug_item1')}</li>
+        <li>{t('contact.bug_item2')}</li>
+        <li>{t('contact.bug_item3')}</li>
+        <li>{t('contact.bug_item4')}</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('contact.bug_help_text')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('contact.feature_suggestions_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('contact.feature_suggestions_text')}></p>
+    </section>
+
+    <section class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg mt-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">{t('contact.medical_note_title')}</h2>
+      <p class="text-gray-700 leading-relaxed">{t('contact.medical_note_text')}</p>
+    </section>
+  </article>
+</BaseLayout>

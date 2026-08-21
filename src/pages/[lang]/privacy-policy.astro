@@ -1,0 +1,106 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE_URL, SITE_NAME, SUPPORTED_LANGS } from '@/consts';
+import { makeTranslator } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  const nonEnglish = SUPPORTED_LANGS.filter((l) => l !== 'en');
+  return nonEnglish.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+// Dynamically import the translation for this lang
+const allTranslations: Record<string, Record<string, unknown>> = {
+  zh: (await import('@/i18n/zh.json')).default,
+  es: (await import('@/i18n/es.json')).default,
+  fr: (await import('@/i18n/fr.json')).default,
+  de: (await import('@/i18n/de.json')).default,
+  ja: (await import('@/i18n/ja.json')).default,
+  ko: (await import('@/i18n/ko.json')).default,
+  pt: (await import('@/i18n/pt.json')).default,
+  ru: (await import('@/i18n/ru.json')).default,
+  ar: (await import('@/i18n/ar.json')).default,
+};
+
+const dict = allTranslations[lang] ?? allTranslations.en;
+const t = makeTranslator(dict);
+const canonical = `${SITE_URL}/${lang}/privacy-policy`;
+
+const alternates = SUPPORTED_LANGS.map((l) => ({
+  lang: l,
+  href: l === 'en' ? `${SITE_URL}/privacy-policy` : `${SITE_URL}/${l}/privacy-policy`,
+}));
+---
+
+<BaseLayout
+  title={t('privacy_policy.meta_title')}
+  description={t('privacy_policy.meta_desc')}
+  canonical={canonical}
+  lang={lang}
+  alternates={alternates}
+  currentPath={`/${lang}/privacy-policy`}
+>
+  <article class="prose prose-lg max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">{t('privacy_policy.title')}</h1>
+
+    <p class="text-gray-600 mb-8">
+      <strong>{t('privacy_policy.last_updated')}</strong> {t('privacy_policy.last_updated_date')}
+    </p>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('privacy_policy.introduction_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('privacy_policy.introduction_text')}></p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('privacy_policy.info_collection_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('privacy_policy.info_collection_text1')}></p>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('privacy_policy.info_collection_text2')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('privacy_policy.google_adsense_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('privacy_policy.google_adsense_text1')}></p>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('privacy_policy.google_adsense_text2')}</p>
+      <ul class="list-disc pl-6 mb-4 text-gray-700">
+        <li>{t('privacy_policy.google_adsense_item1')}</li>
+        <li>{t('privacy_policy.google_adsense_item2')}</li>
+        <li>{t('privacy_policy.google_adsense_item3')}</li>
+        <li>{t('privacy_policy.google_adsense_item4')}</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('privacy_policy.google_adsense_text3')}></p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('privacy_policy.opt_out_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('privacy_policy.opt_out_text1')}></p>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('privacy_policy.opt_out_text2')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('privacy_policy.third_party_links_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('privacy_policy.third_party_links_text')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('privacy_policy.children_privacy_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('privacy_policy.children_privacy_text')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('privacy_policy.policy_changes_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">{t('privacy_policy.policy_changes_text')}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">{t('privacy_policy.contact_us_title')}</h2>
+      <p class="text-gray-700 leading-relaxed mb-4" set:html={t('privacy_policy.contact_us_text')}></p>
+    </section>
+
+    <section class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg mt-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-3">{t('privacy_policy.disclaimer_title')}</h2>
+      <p class="text-gray-700 leading-relaxed" set:html={t('privacy_policy.disclaimer_text')}></p>
+    </section>
+  </article>
+</BaseLayout>
